@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduManage | College Administration Portal</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="loginScreen" class="login-screen">
+    <div class="login-left">
+        <div class="login-brand">
+            <div class="brand-logo">EM</div>
+            <div>
+                <h2>EduManage</h2>
+                <p>College Management System</p>
+            </div>
+        </div>
+
+        <div class="login-content">
+            <h1>Manage Your College<br>Admissions Easily.</h1>
+            <p>
+                A complete admission management system for applications, students, courses, fees and administrative reports.
+            </p>
+
+            <div class="login-features">
+                <div><span>✓</span> Real-Time Admissions</div>
+                <div><span>✓</span> Student Records</div>
+                <div><span>✓</span> Fee Management</div>
+                <div><span>✓</span> Reports & CSV Export</div>
+            </div>
+        </div>
+
+        <div style="font-size: 13px; color: #dcd9ff;">
+            <a href="/" style="color: #fff; text-decoration: none; font-weight: 600;">← Return to Public College Website</a>
+        </div>
+    </div>
+
+    <div class="login-right">
+        <div class="login-box">
+            <div class="mobile-logo">
+                <div class="brand-logo">EM</div>
+            </div>
+
+            <h2>Welcome Back 👋</h2>
+            <p class="login-subtitle">Login to your administration panel</p>
+
+            <form id="loginForm" onsubmit="loginSubmit(event)">
+                <div class="form-group">
+                    <label>Admin Email</label>
+                    <div class="input-box">
+                        <span>✉</span>
+                        <input type="email" id="loginEmail" placeholder="admin@college.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-box">
+                        <span>🔒</span>
+                        <input type="password" id="loginPassword" placeholder="Enter password" required>
+                        <button type="button" class="password-btn" onclick="togglePassword()">👁</button>
+                    </div>
+                </div>
+
+                <div class="login-options">
+                    <label>
+                        <input type="checkbox" id="rememberMe"> Remember me
+                    </label>
+                    <a href="#" onclick="showForgotPassword(event)">Forgot Password?</a>
+                </div>
+
+                <button class="primary-btn login-submit" type="submit" id="loginSubmitBtn">
+                    <span id="loginBtnText">Login to Dashboard →</span>
+                    <span id="loginSpinner" class="spinner hidden"></span>
+                </button>
+            </form>
+
+            <div class="demo-login" style="margin-top: 24px; background: #f5f4ff; border: 1px solid #e6e3ff; border-radius: 12px; padding: 16px;">
+                <strong style="color: var(--primary); display: block; margin-bottom: 6px;">Default Administrator Credentials</strong>
+                <p style="margin: 3px 0; font-size: 13px; color: #555;">Email: <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">admin@college.com</code></p>
+                <p style="margin: 3px 0; font-size: 13px; color: #555;">Initial Password: <code style="background: #fff; padding: 2px 6px; border-radius: 4px;">Admin@123</code></p>
+                <small style="display: block; margin-top: 8px; color: #888;">Credentials can be configured via environment variables and updated in Admin Settings.</small>
+            </div>
+            
+            <div style="text-align: center; margin-top: 18px;">
+                <a href="/" style="color: var(--primary); font-size: 13px; text-decoration: none; font-weight: 600;">← View Public College Admission Portal</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MAIN APPLICATION ================= -->
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">EM</div>
+            <div class="brand-text">
+                <h2>EduManage</h2>
+                <span>ADMIN PANEL</span>
+            </div>
+            <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-title">MAIN MENU</div>
+            <button class="nav-item active" data-page="dashboard" onclick="openPage('dashboard')">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" data-page="applications" onclick="openPage('applications')">
+                <span class="nav-icon">📝</span>
+                <span>Applications</span>
+                <span class="nav-badge" id="applicationBadge">0</span>
+            </button>
+
+            <button class="nav-item" data-page="students" onclick="openPage('students')">
+                <span class="nav-icon">👨‍🎓</span>
+                <span>Students</span>
+            </button>
+
+            <button class="nav-item" data-page="courses" onclick="openPage('courses')">
+                <span class="nav-icon">🎓</span>
+                <span>Courses</span>
+            </button>
+
+            <div class="nav-section-title">FINANCE</div>
+            <button class="nav-item" data-page="payments" onclick="openPage('payments')">
+                <span class="nav-icon">💳</span>
+                <span>Fees & Payments</span>
+            </button>
+
+            <button class="nav-item" data-page="reports" onclick="openPage('reports')">
+                <span class="nav-icon">📊</span>
+                <span>Reports</span>
+            </button>
+
+            <div class="nav-section-title">SYSTEM</div>
+            <button class="nav-item" data-page="settings" onclick="openPage('settings')">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </button>
+
+            <a href="/" target="_blank" class="nav-item" style="text-decoration: none; color: inherit; margin-top: 10px;">
+                <span class="nav-icon">🌐</span>
+                <span>View Public Site ↗</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="admin-profile">
+                <div class="profile-avatar">AD</div>
+                <div class="profile-info">
+                    <strong id="sidebarAdminName">Administrator</strong>
+                    <span>Super Admin</span>
+                </div>
+                <button onclick="logout()" title="Logout">↪</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+            <div class="header-left">
+                <button class="menu-btn" id="menuToggle" onclick="toggleSidebar()">☰</button>
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p id="pageSubtitle">Welcome back, Administrator</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <a href="/" class="secondary-btn" style="text-decoration: none; font-size: 13px; padding: 9px 14px; border-radius: 8px;">Public Portal ↗</a>
+                <button class="icon-btn" onclick="showNotifications()" title="Notifications">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="header-profile">
+                    <div class="profile-avatar">AD</div>
+                    <div>
+                        <strong id="headerAdminName">Administrator</strong>
+                        <span>Super Admin</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= DASHBOARD PAGE ================= -->
+        <section id="dashboardPage" class="page active-page">
+            <div class="welcome-banner">
+                <div>
+                    <span class="banner-label">COLLEGE ADMISSION 2026–27</span>
+                    <h2>Welcome to EduManage 👋</h2>
+                    <p>Live admissions, enrolled students, academic courses and fee collections from the database.</p>
+                </div>
+                <div class="banner-icon">🎓</div>
+            </div>
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple">👨‍🎓</div>
+                    <div class="stat-details">
+                        <span>Total Students</span>
+                        <strong id="totalStudents">0</strong>
+                        <small class="positive">Enrolled students</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">📝</div>
+                    <div class="stat-details">
+                        <span>Total Applications</span>
+                        <strong id="totalApplications">0</strong>
+                        <small>Submitted online</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div class="stat-details">
+                        <span>Admitted / Approved</span>
+                        <strong id="totalAdmitted">0</strong>
+                        <small class="positive">Eligible applicants</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">₹</div>
+                    <div class="stat-details">
+                        <span>Fees Collected</span>
+                        <strong id="totalFees">₹0</strong>
+                        <small>Recorded transactions</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK SHORTCUTS -->
+            <div class="panel" style="margin-top: 24px;">
+                <div class="panel-header">
+                    <div>
+                        <h3>Quick Actions</h3>
+                        <p>Common administrative tasks</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="primary-btn" onclick="openApplicationModal()">+ New Application</button>
+                    <button class="secondary-btn" onclick="openStudentModal()">+ Add Student</button>
+                    <button class="secondary-btn" onclick="openCourseModal()">+ Add Course</button>
+                    <button class="secondary-btn" onclick="openPaymentModal()">+ Record Payment</button>
+                    <button class="secondary-btn" onclick="openPage('applications')">View All Applications</button>
+                </div>
+            </div>
+
+            <!-- DASHBOARD TABLES & DISTRIBUTION -->
+            <div class="content-grid" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; margin-top: 24px;">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Recent Applications</h3>
+                            <p>Latest submissions awaiting review</p>
+                        </div>
+                        <button class="secondary-btn" onclick="openPage('applications')">View All →</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>App #</th>
+                                    <th>Candidate Name</th>
+                                    <th>Course</th>
+                                    <th>Status</th>
+                                    <th>Applied Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentApplicationsTable">
+                                <tr><td colspan="6" class="empty-state">Loading recent applications...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Student Distribution</h3>
+                            <p>Enrollment across courses</p>
+                        </div>
+                    </div>
+                    <div id="courseDistribution" style="padding: 10px 0;">
+                        <div class="empty-state">No student data to display yet.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= APPLICATIONS PAGE ================= -->
+        <section id="applicationsPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>Admission Applications</h2>
+                    <p>Review, verify academic qualifications, approve, and enroll student applicants.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="secondary-btn" onclick="exportCSV('applications')">📥 Export CSV</button>
+                    <button class="primary-btn" onclick="openApplicationModal()">+ New Application</button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="applicationSearch" placeholder="🔍 Search by name, app #, email, phone..." style="flex: 1; min-width: 220px;">
+                <select id="applicationStatusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Under Review">Under Review</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                <select id="applicationCourseFilter">
+                    <option value="">All Programmes</option>
+                </select>
+            </div>
+
+            <div class="panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>App #</th>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                                <th>Email / Mobile</th>
+                                <th>Score (%)</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsTable">
+                            <tr><td colspan="8" class="empty-state">Loading applications...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STUDENTS PAGE ================= -->
+        <section id="studentsPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>Enrolled Students</h2>
+                    <p>Manage officially enrolled college students, courses, and academic years.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="secondary-btn" onclick="exportCSV('students')">📥 Export CSV</button>
+                    <button class="primary-btn" onclick="openStudentModal()">+ Add Student</button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="studentSearch" placeholder="🔍 Search students by name, ID, phone..." style="flex: 1; min-width: 220px;">
+                <select id="studentCourseFilter">
+                    <option value="">All Courses</option>
+                </select>
+            </div>
+
+            <div class="panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>Course</th>
+                                <th>Academic Year</th>
+                                <th>Mobile</th>
+                                <th>Status</th>
+                                <th>Enrolled Date</th>
+                                <th style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTable">
+                            <tr><td colspan="8" class="empty-state">No students found.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= COURSES PAGE ================= -->
+        <section id="coursesPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>Academic Courses</h2>
+                    <p>Manage degree programmes, annual fees, duration, and seat capacity.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="secondary-btn" onclick="exportCSV('courses')">📥 Export CSV</button>
+                    <button class="primary-btn" onclick="openCourseModal()">+ Add Course</button>
+                </div>
+            </div>
+
+            <div class="course-grid" id="courseCardsGrid">
+                <div class="empty-state">Loading courses...</div>
+            </div>
+        </section>
+
+        <!-- ================= PAYMENTS PAGE ================= -->
+        <section id="paymentsPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>Fees & Payments</h2>
+                    <p>Track student tuition, admission, exam, and library fee payments.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="secondary-btn" onclick="exportCSV('payments')">📥 Export CSV</button>
+                    <button class="primary-btn" onclick="openPaymentModal()">+ Record Fee Payment</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom: 24px;">
+                <div class="stat-card">
+                    <div class="stat-icon green">₹</div>
+                    <div class="stat-details">
+                        <span>Total Fee Collection</span>
+                        <strong id="paymentTotal">₹0</strong>
+                        <small class="positive">Net revenue</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">📄</div>
+                    <div class="stat-details">
+                        <span>Total Receipts</span>
+                        <strong id="paymentCount">0</strong>
+                        <small>Transactions processed</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">📊</div>
+                    <div class="stat-details">
+                        <span>Average Payment</span>
+                        <strong id="averagePayment">₹0</strong>
+                        <small>Per transaction</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="paymentSearch" placeholder="🔍 Search receipts by student, receipt #..." style="flex: 1;">
+            </div>
+
+            <div class="panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Receipt #</th>
+                                <th>Student Name</th>
+                                <th>Fee Type</th>
+                                <th>Amount</th>
+                                <th>Payment Mode</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTable">
+                            <tr><td colspan="8" class="empty-state">No payment records found.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= REPORTS PAGE ================= -->
+        <section id="reportsPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>Reports & Analytics</h2>
+                    <p>Comprehensive overview of college admissions and fee collection metrics.</p>
+                </div>
+                <div>
+                    <button class="secondary-btn" onclick="printReport()">🖨️ Print Report</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom: 24px;">
+                <div class="stat-card">
+                    <div class="stat-icon purple">📝</div>
+                    <div class="stat-details">
+                        <span>Total Applications</span>
+                        <strong id="reportApplications">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div class="stat-details">
+                        <span>Approved</span>
+                        <strong id="reportApproved">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div class="stat-details">
+                        <span>Pending</span>
+                        <strong id="reportPending">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red" style="background: #ffebee; color: #c62828;">✕</div>
+                    <div class="stat-details">
+                        <span>Rejected</span>
+                        <strong id="reportRejected">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h3>Programme Capacity & Enrollment Status</h3>
+                        <p>Total capacity vs enrolled students</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Programme Name</th>
+                                <th>Duration</th>
+                                <th>Sanctioned Seats</th>
+                                <th>Enrolled Students</th>
+                                <th>Available Seats</th>
+                                <th>Capacity Utilization</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseReportTable">
+                            <tr><td colspan="6">Loading course reports...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SETTINGS PAGE ================= -->
+        <section id="settingsPage" class="page">
+            <div class="page-toolbar">
+                <div>
+                    <h2>System Settings & Security</h2>
+                    <p>Configure college information and administrator credentials.</p>
+                </div>
+            </div>
+
+            <div class="settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <!-- College Profile -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>College Information</h3>
+                            <p>Basic college profile & contact details</p>
+                        </div>
+                    </div>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label>Institution Name</label>
+                            <input id="collegeName" value="EduManage College of Higher Education">
+                        </div>
+                        <div class="form-group">
+                            <label>Academic Year</label>
+                            <input id="academicYear" value="2026-2027">
+                        </div>
+                        <div class="form-group">
+                            <label>Official Email</label>
+                            <input id="collegeEmail" value="admissions@edumanage.edu.in">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input id="collegePhone" value="+91 (022) 2774-8800">
+                        </div>
+                        <div class="form-group">
+                            <label>Campus Address</label>
+                            <textarea id="collegeAddress" rows="3">Sector 15, Kharghar, Navi Mumbai - 410210, Maharashtra, India</textarea>
+                        </div>
+                        <button class="primary-btn" type="submit">Save Changes</button>
+                    </form>
+                </div>
+
+                <!-- Admin Password Change & System Information -->
+                <div>
+                    <div class="panel" style="margin-bottom: 24px;">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Administrator Security</h3>
+                                <p>Change admin login password</p>
+                            </div>
+                        </div>
+                        <form id="changePasswordForm" onsubmit="changeAdminPassword(event)">
+                            <div class="form-group">
+                                <label>Current Password *</label>
+                                <input type="password" id="currentAdminPassword" placeholder="Enter current password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>New Password * (min 6 characters)</label>
+                                <input type="password" id="newAdminPassword" placeholder="Enter new strong password" required minlength="6">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm New Password *</label>
+                                <input type="password" id="confirmAdminPassword" placeholder="Repeat new password" required minlength="6">
+                            </div>
+                            <button class="primary-btn" type="submit" id="changePwBtn">Update Password</button>
+                        </form>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Database & Deployment Info</h3>
+                                <p>System environment and connectivity</p>
+                            </div>
+                        </div>
+                        <div class="system-info">
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #edf0f8;">
+                                <span style="color: var(--muted);">Application</span>
+                                <strong>EduManage College System</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #edf0f8;">
+                                <span style="color: var(--muted);">Version</span>
+                                <strong>2.0.0 (Production Ready)</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #edf0f8;">
+                                <span style="color: var(--muted);">Backend Engine</span>
+                                <strong>Python 3.12 / Flask / Gunicorn</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #edf0f8;">
+                                <span style="color: var(--muted);">Database</span>
+                                <strong id="dbStatusBadge">Persistent Database</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                                <span style="color: var(--muted);">Platform</span>
+                                <strong>Render Cloud Hosting</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- VIEW FULL APPLICATION DETAILS MODAL -->
+<div class="modal-overlay" id="appDetailsModal">
+    <div class="modal-content" style="max-width: 680px;">
+        <div class="modal-header">
+            <div>
+                <span class="status-pill pending" id="viewStatusBadge">Pending</span>
+                <h2 id="viewAppNumber" style="margin-top: 6px;">EDU-2026-00000</h2>
+                <p id="viewCourseTitle" style="color: var(--muted); margin: 2px 0 0; font-size: 13px;">Programme</p>
+            </div>
+            <button onclick="closeModal('appDetailsModal')">×</button>
+        </div>
+
+        <div id="appDetailsBody" style="max-height: 65vh; overflow-y: auto; padding-right: 6px;">
+            <!-- Rendered via JS -->
+        </div>
+
+        <div class="modal-actions" style="border-top: 1px solid #edf0f8; padding-top: 18px; margin-top: 18px;">
+            <button type="button" class="danger-btn" id="rejectAppBtn" onclick="updateAppStatusPrompt('Rejected')">Reject</button>
+            <button type="button" class="secondary-btn" id="reviewAppBtn" onclick="updateAppStatusPrompt('Under Review')">Mark Under Review</button>
+            <button type="button" class="primary-btn" id="approveAppBtn" onclick="updateAppStatusPrompt('Approved')">Approve</button>
+            <button type="button" class="primary-btn" id="enrollAppBtn" onclick="enrollCurrentApp()" style="background: #1ba982;">Enroll as Student 👨‍🎓</button>
+        </div>
+    </div>
+</div>
+
+<!-- ADD / EDIT APPLICATION MODAL -->
+<div class="modal-overlay" id="applicationModal">
+    <div class="modal-content" style="max-width: 580px;">
+        <div class="modal-header">
+            <div>
+                <h3>Add Admission Application</h3>
+                <p>Register an application directly as administrator.</p>
+            </div>
+            <button onclick="closeModal('applicationModal')">×</button>
+        </div>
+
+        <form id="applicationForm" onsubmit="submitAdminApplication(event)">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Candidate Full Name *</label>
+                    <input id="adminApplicantName" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label>Programme / Course *</label>
+                    <select id="applicantCourse" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="adminApplicantEmail" required placeholder="student@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" id="adminApplicantPhone" required maxlength="15" placeholder="10-digit mobile">
+                </div>
+                <div class="form-group">
+                    <label>Qualifying Exam</label>
+                    <input id="adminApplicantQual" placeholder="e.g. 12th HSC Science" value="12th / HSC">
+                </div>
+                <div class="form-group">
+                    <label>Aggregate Percentage (%)</label>
+                    <input type="number" id="adminApplicantPercentage" step="0.01" min="0" max="100" placeholder="e.g. 85.50" value="75.00">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" onclick="closeModal('applicationModal')">Cancel</button>
+                <button type="submit" class="primary-btn">Save Application</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ADD / EDIT STUDENT MODAL -->
+<div class="modal-overlay" id="studentModal">
+    <div class="modal-content" style="max-width: 540px;">
+        <div class="modal-header">
+            <div>
+                <h3 id="studentModalTitle">Add Enrolled Student</h3>
+                <p>Create or update a student record.</p>
+            </div>
+            <button onclick="closeModal('studentModal')">×</button>
+        </div>
+
+        <form id="studentForm" onsubmit="submitStudentForm(event)">
+            <input type="hidden" id="editStudentId">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Student Full Name *</label>
+                    <input id="studentName" required placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Course *</label>
+                    <select id="studentCourse" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Academic Year *</label>
+                    <select id="studentYear" required>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input id="studentPhone" placeholder="10 digit mobile">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="studentEmail" placeholder="student@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Enrollment Status</label>
+                    <select id="studentStatus">
+                        <option value="Active">Active</option>
+                        <option value="Graduated">Graduated</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" onclick="closeModal('studentModal')">Cancel</button>
+                <button class="primary-btn" type="submit">Save Student</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ADD / EDIT COURSE MODAL -->
+<div class="modal-overlay" id="courseModal">
+    <div class="modal-content" style="max-width: 560px;">
+        <div class="modal-header">
+            <div>
+                <h3 id="courseModalTitle">Add Academic Course</h3>
+                <p>Define degree programme details and fees.</p>
+            </div>
+            <button onclick="closeModal('courseModal')">×</button>
+        </div>
+
+        <form id="courseForm" onsubmit="submitCourseForm(event)">
+            <input type="hidden" id="editCourseId">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Course Name *</label>
+                    <input id="courseName" required placeholder="e.g. B.Sc. Computer Science">
+                </div>
+                <div class="form-group">
+                    <label>Course Code</label>
+                    <input id="courseCode" placeholder="e.g. BSC-CS">
+                </div>
+                <div class="form-group">
+                    <label>Icon Emoji</label>
+                    <input id="courseIcon" value="🎓" maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input id="courseDuration" value="3 Years">
+                </div>
+                <div class="form-group">
+                    <label>Total Seats</label>
+                    <input id="courseSeats" type="number" value="60" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Annual Tuition Fee (₹)</label>
+                    <input id="courseFee" type="number" value="45000" min="0" required>
+                </div>
+                <div class="form-group full">
+                    <label>Eligibility Requirements</label>
+                    <input id="courseEligibility" placeholder="e.g. 10+2 with Math/Science min 50%">
+                </div>
+                <div class="form-group full">
+                    <label>Course Description</label>
+                    <textarea id="courseDescription" rows="2" placeholder="Brief curriculum highlight..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" onclick="closeModal('courseModal')">Cancel</button>
+                <button type="submit" class="primary-btn">Save Course</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- RECORD PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+    <div class="modal-content" style="max-width: 540px;">
+        <div class="modal-header">
+            <div>
+                <h3>Record Fee Payment</h3>
+                <p>Register fee receipt against an enrolled student.</p>
+            </div>
+            <button onclick="closeModal('paymentModal')">×</button>
+        </div>
+
+        <form id="paymentForm" onsubmit="submitPaymentForm(event)">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Student Name *</label>
+                    <input id="paymentStudent" required placeholder="Enter student name">
+                </div>
+                <div class="form-group">
+                    <label>Fee Type *</label>
+                    <select id="paymentType" required>
+                        <option value="Tuition Fee">Tuition Fee</option>
+                        <option value="Admission Fee">Admission Fee</option>
+                        <option value="Semester Fee">Semester Fee</option>
+                        <option value="Examination Fee">Examination Fee</option>
+                        <option value="Library Fee">Library Fee</option>
+                        <option value="Hostel Fee">Hostel Fee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Amount (₹) *</label>
+                    <input id="paymentAmount" type="number" min="1" required placeholder="Amount in ₹">
+                </div>
+                <div class="form-group">
+                    <label>Payment Mode</label>
+                    <select id="paymentMode">
+                        <option value="Online / UPI">Online / UPI</option>
+                        <option value="Net Banking">Net Banking</option>
+                        <option value="Demand Draft">Demand Draft</option>
+                        <option value="Cash Counter">Cash Counter</option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label>Reference / Transaction No</label>
+                    <input id="paymentRef" placeholder="e.g. UPI-984028472">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" onclick="closeModal('paymentModal')">Cancel</button>
+                <button type="submit" class="primary-btn">Record Payment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toastContainer"></div>
+
+<script src="/script.js"></script>
+</body>
+</html>

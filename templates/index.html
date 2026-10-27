@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduManage | College Admission Portal 2026–2027</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/static/public.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVIGATION HEADER -->
+<header class="pub-nav">
+    <div class="pub-nav-container">
+        <a href="/" class="pub-brand">
+            <div class="brand-logo">EM</div>
+            <div class="pub-brand-text">
+                <h2>EduManage</h2>
+                <span>College of Higher Education</span>
+            </div>
+        </a>
+
+        <button class="mobile-toggle" onclick="togglePubNav()" aria-label="Toggle Navigation">☰</button>
+
+        <nav class="pub-nav-links" id="pubNavLinks">
+            <a href="#about" onclick="closePubNav()">About</a>
+            <a href="#courses" onclick="closePubNav()">Courses & Fees</a>
+            <a href="#admission" onclick="closePubNav()">Admission Process</a>
+            <a href="#apply" class="nav-apply-btn" onclick="closePubNav()">Apply Online</a>
+            <a href="#track" onclick="closePubNav()">Track Status</a>
+            <a href="/admin" class="nav-admin-btn">Admin Portal 🔒</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="pub-hero">
+    <div class="pub-hero-container">
+        <div class="pub-hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Admissions Open for Academic Year 2026–2027
+            </div>
+            <h1>Empowering Minds, Shaping Tomorrow's Leaders</h1>
+            <p>
+                EduManage College is an autonomous premier institution committed to academic brilliance, cutting-edge research, and career-defining industry placements. Explore accredited undergraduate & postgraduate degrees.
+            </p>
+            <div class="hero-actions">
+                <a href="#apply" class="primary-btn hero-btn">
+                    <span>Apply for Admission</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="#courses" class="secondary-btn hero-btn">Explore Courses</a>
+                <a href="#track" class="text-link-btn">Check Application Status 🔍</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-pill">
+                    <strong>100%</strong>
+                    <span>Placement Support</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>4.8 ★</strong>
+                    <span>Student Satisfaction</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>25+</strong>
+                    <span>Years of Excellence</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>15,000+</strong>
+                    <span>Global Alumni</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub-hero-card">
+            <div class="hero-card-header">
+                <div class="hero-avatar-box">🎓</div>
+                <div>
+                    <h3>Direct Admission Desk</h3>
+                    <p>Academic Session 2026–27</p>
+                </div>
+            </div>
+            <div class="hero-card-body">
+                <div class="hero-card-notice">
+                    <span>⚡ Quick Registration</span>
+                    <p>Applications are reviewed on a rolling basis. Early applicants receive priority counseling and merit scholarship evaluation.</p>
+                </div>
+                <ul class="hero-checklist">
+                    <li>✓ UGC Recognised & NAAC 'A' Accredited</li>
+                    <li>✓ High-tech computing labs & digital library</li>
+                    <li>✓ Modern hostels & multi-sport sports complex</li>
+                    <li>✓ Easy installment fee payment facilities</li>
+                </ul>
+                <a href="#apply" class="primary-btn card-cta-btn">Fill Application Form</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COLLEGE OVERVIEW / ABOUT SECTION -->
+<section id="about" class="pub-section bg-alt">
+    <div class="section-container">
+        <div class="section-header text-center">
+            <span class="section-tag">ABOUT EDUMANAGE</span>
+            <h2>Why Choose EduManage College?</h2>
+            <p>We combine time-tested pedagogical methods with cutting-edge industry training to equip students for global leadership.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>World-Class Infrastructure</h3>
+                <p>Sprawling Wi-Fi campus with smart audiovisual classrooms, research centers, and state-of-the-art specialized laboratories.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Distinguished Faculty</h3>
+                <p>Learn from doctorate professors, seasoned academicians, and senior visiting corporate professionals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Corporate Ties & Internships</h3>
+                <p>Over 180+ partner recruiting firms including Fortune 500 corporations offering pre-placement offers and paid internships.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Holistic Development</h3>
+                <p>20+ active student cultural, technology, and sports clubs fostering entrepreneurship, creative arts, and leadership.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AVAILABLE COURSES SECTION -->
+<section id="courses" class="pub-section">
+    <div class="section-container">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">ACADEMIC PROGRAMMES</span>
+                <h2>Available Degrees & Eligibility</h2>
+                <p>Explore undergraduate and postgraduate programmes designed for modern career tracks.</p>
+            </div>
+            <div>
+                <a href="#apply" class="primary-btn">Apply Now</a>
+            </div>
+        </div>
+
+        <div class="courses-cards-grid" id="publicCoursesContainer">
+            {% for c in courses %}
+            <div class="pub-course-card">
+                <div class="course-card-top">
+                    <span class="course-icon-badge">{{ c.icon or '🎓' }}</span>
+                    <span class="course-code-badge">{{ c.code }}</span>
+                </div>
+                <h3>{{ c.name }}</h3>
+                <p class="course-desc">{{ c.description }}</p>
+                
+                <div class="course-meta-list">
+                    <div class="course-meta-item">
+                        <span class="meta-label">Duration:</span>
+                        <strong class="meta-val">{{ c.duration }}</strong>
+                    </div>
+                    <div class="course-meta-item">
+                        <span class="meta-label">Available Seats:</span>
+                        <strong class="meta-val">{{ c.seats }} Seats</strong>
+                    </div>
+                    <div class="course-meta-item">
+                        <span class="meta-label">Annual Tuition Fee:</span>
+                        <strong class="meta-val price-highlight">₹{{ "{:,.0f}".format(c.annual_fee) }}</strong>
+                    </div>
+                    <div class="course-meta-item">
+                        <span class="meta-label">Eligibility:</span>
+                        <span class="meta-val eligibility-text">{{ c.eligibility }}</span>
+                    </div>
+                </div>
+
+                <div class="course-card-footer">
+                    <button class="primary-btn select-course-btn" onclick="selectCourseToApply('{{ c.name }}')">
+                        Apply for this Course →
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ADMISSION INSTRUCTIONS SECTION -->
+<section id="admission" class="pub-section bg-alt">
+    <div class="section-container">
+        <div class="section-header text-center">
+            <span class="section-tag">STEP-BY-STEP GUIDE</span>
+            <h2>Simple 4-Step Admission Process</h2>
+            <p>Applying to EduManage College is smooth, transparent, and completely digitized.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Select Course</h3>
+                <p>Review the programme curriculum, fee schedule, and confirm your minimum percentage eligibility.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Submit Application</h3>
+                <p>Complete the online form with candidate, contact, and qualifying board/university details.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>Committee Review</h3>
+                <p>Our academic admissions panel evaluates qualifications and marks. Check live status online anytime.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h3>Enrollment & ID</h3>
+                <p>Upon approval, pay the semester fees, receive your official Student ID, and attend student orientation.</p>
+            </div>
+        </div>
+
+        <div class="guidelines-box">
+            <div class="guidelines-col">
+                <h4>📋 Required Documents for Verification</h4>
+                <ul>
+                    <li>10th / SSC Marksheet & Passing Certificate</li>
+                    <li>12th / HSC / Diploma Marksheet & Passing Certificate</li>
+                    <li>School/College Leaving or Transfer Certificate (LC/TC)</li>
+                    <li>Valid Government ID Proof (Aadhaar Card / Passport / Voter ID)</li>
+                    <li>Recent Passport-Size Color Photographs (3 copies)</li>
+                </ul>
+            </div>
+            <div class="guidelines-col">
+                <h4>📅 Important Admission Deadlines 2026</h4>
+                <ul>
+                    <li><strong>Online Application Window:</strong> Now Open for Batch 2026–27</li>
+                    <li><strong>Round 1 Document Verification:</strong> Within 48 hours of submission</li>
+                    <li><strong>Merit Confirmation & Seat Allocation:</strong> Rolling Weekly Lists</li>
+                    <li><strong>Academic Orientation & Commencement:</strong> July 2026</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ONLINE ADMISSION APPLICATION FORM SECTION -->
+<section id="apply" class="pub-section">
+    <div class="section-container">
+        <div class="form-wrapper">
+            <div class="form-header-box">
+                <div class="form-header-text">
+                    <span class="section-tag tag-white">ONLINE ADMISSION 2026–27</span>
+                    <h2>Application for Student Admission</h2>
+                    <p>Please enter your genuine academic and contact details. A unique Application Number will be issued upon submission.</p>
+                </div>
+                <div class="form-header-icon">📝</div>
+            </div>
+
+            <form id="publicAdmissionForm" class="pub-app-form" onsubmit="submitAdmissionForm(event)">
+                <div id="formAlertBox" class="alert-box hidden"></div>
+
+                <!-- Section 1: Candidate Details -->
+                <div class="form-section-title">
+                    <span class="sec-num">1</span>
+                    <h3>Candidate Personal Details</h3>
+                </div>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="appName">Full Name of Student <span class="req">*</span></label>
+                        <input type="text" id="appName" name="name" placeholder="e.g. Saniya Divekar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appDob">Date of Birth <span class="req">*</span></label>
+                        <input type="date" id="appDob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appGender">Gender <span class="req">*</span></label>
+                        <select id="appGender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="appGuardian">Parent / Guardian Name <span class="req">*</span></label>
+                        <input type="text" id="appGuardian" name="guardian_name" placeholder="Father's or Mother's Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appGuardianPhone">Parent Contact Number</label>
+                        <input type="tel" id="appGuardianPhone" name="guardian_phone" placeholder="10-digit mobile number">
+                    </div>
+                </div>
+
+                <!-- Section 2: Contact & Address -->
+                <div class="form-section-title">
+                    <span class="sec-num">2</span>
+                    <h3>Contact Information & Address</h3>
+                </div>
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="appEmail">Student Email Address <span class="req">*</span></label>
+                        <input type="email" id="appEmail" name="email" placeholder="student@example.com" required>
+                        <small class="field-hint">Used for all admission correspondence.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="appPhone">Student Mobile Number <span class="req">*</span></label>
+                        <input type="tel" id="appPhone" name="phone" placeholder="10-digit mobile number" maxlength="15" required>
+                        <small class="field-hint">Used for SMS updates and status verification.</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="appAddress">Residential Address <span class="req">*</span></label>
+                    <textarea id="appAddress" name="address" rows="2" placeholder="House/Flat No., Street, Landmark" required></textarea>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="appCity">City <span class="req">*</span></label>
+                        <input type="text" id="appCity" name="city" placeholder="e.g. Navi Mumbai" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appState">State <span class="req">*</span></label>
+                        <input type="text" id="appState" name="state" placeholder="e.g. Maharashtra" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appPincode">PIN Code <span class="req">*</span></label>
+                        <input type="text" id="appPincode" name="pincode" placeholder="e.g. 410210" maxlength="10" required>
+                    </div>
+                </div>
+
+                <!-- Section 3: Academic Qualifications -->
+                <div class="form-section-title">
+                    <span class="sec-num">3</span>
+                    <h3>Academic Qualification & Desired Course</h3>
+                </div>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="appQual">Qualifying Examination <span class="req">*</span></label>
+                        <select id="appQual" name="qualification" required>
+                            <option value="12th / HSC (Science)">12th / HSC (Science)</option>
+                            <option value="12th / HSC (Commerce)">12th / HSC (Commerce)</option>
+                            <option value="12th / HSC (Arts)">12th / HSC (Arts)</option>
+                            <option value="Polytechnic Diploma">Polytechnic Diploma</option>
+                            <option value="Undergraduate Degree">Undergraduate Degree (for PG)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appBoard">Board / University Name <span class="req">*</span></label>
+                        <input type="text" id="appBoard" name="board_university" placeholder="e.g. Maharashtra State Board / CBSE" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appYear">Passing Year <span class="req">*</span></label>
+                        <select id="appYear" name="passing_year" required>
+                            <option value="2026">2026 (Appearing / Passed)</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="appMarks">Aggregate Percentage (%) or CGPA <span class="req">*</span></label>
+                        <input type="number" id="appMarks" name="percentage" step="0.01" min="0" max="100" placeholder="e.g. 84.50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appCourseSelect">Programme / Course Applying For <span class="req">*</span></label>
+                        <select id="appCourseSelect" name="course_name" required>
+                            <option value="">-- Choose Programme --</option>
+                            {% for c in courses %}
+                            <option value="{{ c.name }}">{{ c.name }} ({{ c.duration }}) - ₹{{ "{:,.0f}".format(c.annual_fee) }}/yr</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 4: Declaration -->
+                <div class="declaration-box">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="appDeclare" required>
+                        <span class="checkmark"></span>
+                        <span class="declare-text">
+                            I hereby declare that all details entered in this application are correct and genuine to the best of my knowledge. I agree to abide by EduManage College rules, code of conduct, and admission guidelines.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-submit-row">
+                    <button type="submit" id="submitAppBtn" class="primary-btn submit-btn">
+                        <span id="submitBtnText">Submit Admission Application</span>
+                        <span id="submitSpinner" class="spinner hidden"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- TRACK APPLICATION STATUS SECTION -->
+<section id="track" class="pub-section bg-alt">
+    <div class="section-container">
+        <div class="section-header text-center">
+            <span class="section-tag">APPLICANT PORTAL</span>
+            <h2>Track Your Application Status</h2>
+            <p>Enter your unique Application Number and registered Mobile/Email to check live admission status.</p>
+        </div>
+
+        <div class="track-box-card">
+            <form id="trackForm" onsubmit="trackApplication(event)">
+                <div class="track-inputs-row">
+                    <div class="form-group track-input">
+                        <label for="trackAppNo">Application Number</label>
+                        <input type="text" id="trackAppNo" placeholder="e.g. EDU-2026-48291" required>
+                    </div>
+                    <div class="form-group track-input">
+                        <label for="trackVerification">Registered Mobile or Email</label>
+                        <input type="text" id="trackVerification" placeholder="10-digit mobile or email" required>
+                    </div>
+                    <div class="track-btn-col">
+                        <label>&nbsp;</label>
+                        <button type="submit" id="trackBtn" class="primary-btn track-submit-btn">
+                            <span id="trackBtnText">Verify & Check</span>
+                            <span id="trackSpinner" class="spinner hidden"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="trackResultContainer" class="track-result-box hidden">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT & CAMPUS SECTION -->
+<section class="pub-section">
+    <div class="section-container">
+        <div class="section-header text-center">
+            <span class="section-tag">CAMPUS DESK</span>
+            <h2>Get in Touch with Admissions Office</h2>
+            <p>Our counseling staff is available Monday through Saturday to answer questions regarding admissions and scholarships.</p>
+        </div>
+
+        <div class="contact-info-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Campus Location</h3>
+                <p>EduManage Academic Complex, Institutional Area, Sector 15, Kharghar, Navi Mumbai – 410210, Maharashtra, India.</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Helpline Numbers</h3>
+                <p><strong>Admissions:</strong> +91 (022) 2774-8800<br><strong>Mobile/WhatsApp:</strong> +91 98200 12345</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Official Inquiries</h3>
+                <p><strong>General:</strong> admissions@edumanage.edu.in<br><strong>Registrar:</strong> registrar@edumanage.edu.in</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">⏰</div>
+                <h3>Office Working Hours</h3>
+                <p>Monday – Friday: 9:00 AM – 5:30 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pub-footer">
+    <div class="pub-footer-container">
+        <div class="footer-col brand-col">
+            <div class="pub-brand">
+                <div class="brand-logo">EM</div>
+                <div class="pub-brand-text">
+                    <h2>EduManage</h2>
+                    <span>College of Higher Education</span>
+                </div>
+            </div>
+            <p class="footer-desc">
+                An accredited autonomous institution delivering forward-looking education, technology research, and holistic student development.
+            </p>
+            <p class="copyright">© 2026 EduManage College. All rights reserved.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#about">About the College</a></li>
+                <li><a href="#courses">Programmes & Degrees</a></li>
+                <li><a href="#admission">Admission Criteria</a></li>
+                <li><a href="#apply">Online Application Form</a></li>
+                <li><a href="#track">Check Status</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Student Resources</h4>
+            <ul>
+                <li><a href="#admission">Document Checklist</a></li>
+                <li><a href="#courses">Fee Structure</a></li>
+                <li><a href="#courses">Scholarship Information</a></li>
+                <li><a href="#track">Application Tracking</a></li>
+                <li><a href="/admin">Staff & Admin Login</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Administration</h4>
+            <p>Administrative staff and faculty may access the management portal for evaluations and student admissions.</p>
+            <a href="/admin" class="footer-admin-btn">Admin Portal Login →</a>
+        </div>
+    </div>
+</footer>
+
+<!-- APPLICATION SUCCESS MODAL -->
+<div id="successModal" class="modal-overlay">
+    <div class="modal-content success-card">
+        <div class="success-icon-wrap">✓</div>
+        <h2>Application Submitted Successfully!</h2>
+        <p class="success-subtitle">Your college admission application has been registered in the EduManage system.</p>
+        
+        <div class="app-number-banner">
+            <span>YOUR APPLICATION NUMBER</span>
+            <strong id="modalAppNumber">EDU-2026-00000</strong>
+            <small>Please screenshot or note this number down for tracking and correspondence.</small>
+        </div>
+
+        <div class="success-details" id="modalDetailsBox">
+            <!-- Filled via JS -->
+        </div>
+
+        <div class="modal-actions" style="justify-content: center; gap: 12px; margin-top: 25px;">
+            <button class="primary-btn" onclick="printApplicationReceipt()">🖨️ Print Receipt</button>
+            <button class="secondary-btn" onclick="goToTrackFromSuccess()">Track Status</button>
+            <button class="secondary-btn" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="toastContainer"></div>
+
+<script src="/static/public.js"></script>
+</body>
+</html>

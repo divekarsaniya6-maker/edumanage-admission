@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: edumanage-admission
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@college.com
+      - key: ADMIN_PASSWORD
+        value: Admin@123
+      - key: DATABASE_URL
+        fromDatabase:
+          name: edumanage-postgres
+          property: connectionString
+
+databases:
+  - name: edumanage-postgres
+    databaseName: edumanage_db
+    user: edumanage_user
+    plan: free

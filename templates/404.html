@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | EduManage</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .error-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+        .error-code {
+            font-size: 80px;
+            font-weight: 800;
+            color: var(--primary, #6558e8);
+            line-height: 1;
+            margin: 0 0 10px;
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ink, #1d2440);
+            margin: 0 0 12px;
+        }
+        .error-desc {
+            color: var(--muted, #7e849f);
+            max-width: 480px;
+            margin: 0 0 25px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="brand-logo" style="margin-bottom: 20px; width: 56px; height: 56px; font-size: 22px;">EM</div>
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-desc">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+            <a href="/" class="primary-btn" style="text-decoration: none; display: inline-block;">Back to Home</a>
+            <a href="/admin" class="secondary-btn" style="text-decoration: none; display: inline-block;">Admin Portal</a>
+        </div>
+    </div>
+</body>
+</html>
